@@ -1,0 +1,1117 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="canonical" href="https://cast.ai/guides/ingress/">
+      
+      <link rel="shortcut icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.2.7">
+    
+    
+      
+        <title>Exposing your app to the internet - CAST AI Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.cb6bc1d0.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.39b8e14a.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#ffffff">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nimbus+Sans:300,400,400i,700%7C&display=fallback">
+        <style>body,input{font-family:"Nimbus Sans",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="white" data-md-color-accent="indigo">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#exposing-your-app-to-the-internet" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="https://cast.ai" title="CAST AI Documentation" class="md-header-nav__button md-logo" aria-label="CAST AI Documentation">
+      <img src="../../img/cast-logo-dark-blue.svg" alt="Cast logo" style="width: 5em;" />
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      <div class="md-header-nav__ellipsis">
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            CAST AI Documentation
+          </span>
+        </div>
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            
+              Exposing your app to the internet
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://cast.ai" title="CAST AI Documentation" class="md-nav__button md-logo" aria-label="CAST AI Documentation">
+      <img src="../../img/cast-logo-dark-blue.svg" alt="Cast logo" style="width: 5em;" />
+    </a>
+    CAST AI Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-help/" class="md-nav__link">
+        Getting help
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" >
+      
+      <label class="md-nav__link" for="nav-3">
+        Getting started
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Getting started" data-md-level="1">
+        <label class="md-nav__title" for="nav-3">
+          <span class="md-nav__icon md-icon"></span>
+          Getting started
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/setting-up-account/" class="md-nav__link">
+        Setting up an account
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-2" type="checkbox" id="nav-3-2" >
+      
+      <label class="md-nav__link" for="nav-3-2">
+        Setting up credentials
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Setting up credentials" data-md-level="2">
+        <label class="md-nav__title" for="nav-3-2">
+          <span class="md-nav__icon md-icon"></span>
+          Setting up credentials
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/configuring-gcp-credentials/" class="md-nav__link">
+        Configure Google Cloud credentials
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/configuring-aws-credentials/" class="md-nav__link">
+        Configure AWS credentials
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/configuring-do-credentials/" class="md-nav__link">
+        Configure Digital Ocean credentials
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/configuring-azure-credentials/" class="md-nav__link">
+        Configure Azure credentials
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/creating-your-first-cluster/" class="md-nav__link">
+        Creating your first cluster
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/deploying-applications/" class="md-nav__link">
+        Deploying Applications
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" >
+      
+      <label class="md-nav__link" for="nav-4">
+        Concepts
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Concepts" data-md-level="1">
+        <label class="md-nav__title" for="nav-4">
+          <span class="md-nav__icon md-icon"></span>
+          Concepts
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/how-it-works/" class="md-nav__link">
+        How it works
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/architecture-overview/" class="md-nav__link">
+        Cluster architecture overview
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/vpn-overview/" class="md-nav__link">
+        Cluster VPN overview
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" checked>
+      
+      <label class="md-nav__link" for="nav-5">
+        Developer guides
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Developer guides" data-md-level="1">
+        <label class="md-nav__title" for="nav-5">
+          <span class="md-nav__icon md-icon"></span>
+          Developer guides
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pod-pinning/" class="md-nav__link">
+        Configure pod placement by topology
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../volumes/" class="md-nav__link">
+        Dynamic volume provisioning
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../autoscaling-policies/" class="md-nav__link">
+        Autoscaling policies
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pod-autoscaler/hpa/" class="md-nav__link">
+        Horizontal Pod Autoscaler
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Exposing your app to the internet
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Exposing your app to the internet
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    Prerequisites
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deployment" class="md-nav__link">
+    Deployment
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verification" class="md-nav__link">
+    Verification
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deployment-without-cname-alias" class="md-nav__link">
+    Deployment without CNAME alias
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metrics" class="md-nav__link">
+    Metrics
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#combinations" class="md-nav__link">
+    Combinations
+  </a>
+  
+    <nav class="md-nav" aria-label="Combinations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#single-host-multiple-services" class="md-nav__link">
+    Single host, multiple services
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multiple-hosts" class="md-nav__link">
+    Multiple hosts
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../node-autoscaler/spot-instances/spot/" class="md-nav__link">
+        Spot/Preemptible Instances
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" >
+      
+      <label class="md-nav__link" for="nav-6">
+        API
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="API" data-md-level="1">
+        <label class="md-nav__title" for="nav-6">
+          <span class="md-nav__icon md-icon"></span>
+          API
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/overview/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/authentication/" class="md-nav__link">
+        Authentication
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/specification/" class="md-nav__link">
+        API specification
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/terraform-provider/" class="md-nav__link">
+        Terraform provider
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://console.cast.ai" class="md-nav__link">
+        CAST AI Console
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    Prerequisites
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deployment" class="md-nav__link">
+    Deployment
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verification" class="md-nav__link">
+    Verification
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deployment-without-cname-alias" class="md-nav__link">
+    Deployment without CNAME alias
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metrics" class="md-nav__link">
+    Metrics
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#combinations" class="md-nav__link">
+    Combinations
+  </a>
+  
+    <nav class="md-nav" aria-label="Combinations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#single-host-multiple-services" class="md-nav__link">
+    Single host, multiple services
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multiple-hosts" class="md-nav__link">
+    Multiple hosts
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/castai/docs/edit/main/docs/guides/ingress.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="exposing-your-app-to-the-internet">Exposing your app to the internet<a class="headerlink" href="#exposing-your-app-to-the-internet" title="Permanent link">&para;</a></h1>
+<p>Making your CAST AI hosted application available on the internet is done in the conventional Kubernetes way: by deploying an <a href="https://kubernetes.io/docs/concepts/services-networking/ingress/">ingress</a>.</p>
+<p>CAST AI clusters are automatically provisioned with:</p>
+<ul>
+<li>Ingress controller and the necessary multi-cloud load balancers infrastructure;</li>
+<li>A certificate manager configured to manage TLS certificates with <a href="https://letsencrypt.org">letsencrypt.org</a>;</li>
+<li>Metric collection for your ingress traffic;</li>
+</ul>
+<p>See <a href="../../concepts/architecture-overview/#ingress">architecture overview</a> for more details.</p>
+<p>Let's deploy, configure, and inspect a basic application: an empty Caddy server.</p>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
+<p>First and foremost, you need to create or have a CAST AI cluster (<a href="../../getting-started/creating-your-first-cluster/">guide</a>) ready to go.</p>
+<p>On the cluster details page in the console, note the "GSLB DNS" value. The value should look similar to <code>1234567890.your-cluster-name-7da6f229.onmulti.cloud</code> once  the cluster is done creating. This is the internal DNS name for your future ingress. But for the TLS setup to work, you'll also need an CNAME alias for it, using host name of your choice. For example, if you prepare to serve your application on <code>https://sample-app.yourdomain.com</code>, create a CNAME record in your DNS provider with the name <code>sample-app</code> and value <code>1234567890.your-cluster-name-7da6f229.onmulti.cloud</code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you check the DNS resolution at this point, e.g. <code>dig sample-app.yourdomain.com</code>, you should be able to see that the name resolves to one or more cloud-specific load balancers.</p>
+</div>
+<h2 id="deployment">Deployment<a class="headerlink" href="#deployment" title="Permanent link">&para;</a></h2>
+<p>It's a rather bare-bones setup consisting of 2-replica deployment, a service description for that deployment, and an ingress resource to publish that service. Change value <code>sample-app.yourdomain.com</code> to the DNS CNAME that you created before, and deploy everything else as-is to your cluster.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
+<span class="nt">kind</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Deployment</span>
+<span class="nt">metadata</span><span class="p">:</span>
+  <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">sample-app</span>
+<span class="nt">spec</span><span class="p">:</span>
+  <span class="nt">replicas</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2</span>
+  <span class="nt">selector</span><span class="p">:</span>
+    <span class="nt">matchLabels</span><span class="p">:</span>
+      <span class="nt">app</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">sample-app</span>
+  <span class="nt">template</span><span class="p">:</span>
+    <span class="nt">metadata</span><span class="p">:</span>
+      <span class="nt">labels</span><span class="p">:</span>
+        <span class="nt">app</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">sample-app</span>
+    <span class="nt">spec</span><span class="p">:</span>
+      <span class="nt">containers</span><span class="p">:</span>
+        <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">sample-app</span>
+          <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">caddy:2.2.1-alpine</span>
+          <span class="nt">ports</span><span class="p">:</span>
+            <span class="p p-Indicator">-</span> <span class="nt">containerPort</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">80</span>
+
+<span class="nn">---</span>
+
+<span class="nt">apiVersion</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Service</span>
+<span class="nt">metadata</span><span class="p">:</span>
+  <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">sample-app</span>
+<span class="nt">spec</span><span class="p">:</span>
+  <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">NodePort</span>
+  <span class="nt">selector</span><span class="p">:</span>
+    <span class="nt">app</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">sample-app</span>
+  <span class="nt">ports</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">http</span>
+      <span class="nt">port</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">80</span>
+      <span class="nt">targetPort</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">80</span>
+
+<span class="nn">---</span>
+
+<span class="nt">apiVersion</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">networking.k8s.io/v1beta1</span>
+<span class="nt">kind</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Ingress</span>
+<span class="nt">metadata</span><span class="p">:</span>
+  <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">sample-app-ingress</span>
+  <span class="nt">annotations</span><span class="p">:</span>
+    <span class="nt">kubernetes.io/ingress.class</span><span class="p">:</span> <span class="s">&quot;nginx&quot;</span>
+    <span class="nt">cert-manager.io/cluster-issuer</span><span class="p">:</span> <span class="s">&quot;letsencrypt-prod&quot;</span>
+<span class="nt">spec</span><span class="p">:</span>
+  <span class="nt">tls</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">hosts</span><span class="p">:</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">sample-app.yourdomain.com</span>
+      <span class="nt">secretName</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">sample-app</span>
+  <span class="nt">rules</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">host</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">sample-app.yourdomain.com</span>
+      <span class="nt">http</span><span class="p">:</span>
+        <span class="nt">paths</span><span class="p">:</span>
+          <span class="p p-Indicator">-</span> <span class="nt">path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/</span>
+            <span class="nt">backend</span><span class="p">:</span>
+              <span class="nt">serviceName</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">sample-app</span>
+              <span class="nt">servicePort</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">http</span>
+</code></pre></div>
+<h2 id="verification">Verification<a class="headerlink" href="#verification" title="Permanent link">&para;</a></h2>
+<p>After deploying the configuration above, the application should be ready for testing in a few moments. Check in the browser or CLI, e.g.:</p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>curl -L -I sample-app.yourdomain.com
+<span class="go">HTTP/1.1 308 Permanent Redirect</span>
+<span class="go">Date: Wed, 13 Jan 2021 11:30:52 GMT</span>
+<span class="go">Content-Type: text/html</span>
+<span class="go">Content-Length: 164</span>
+<span class="go">Connection: keep-alive</span>
+<span class="go">Location: https://sample-app.yourdomain.com/</span>
+
+<span class="go">HTTP/2 200</span>
+<span class="go">date: Wed, 13 Jan 2021 11:30:52 GMT</span>
+<span class="go">content-type: text/html; charset=utf-8</span>
+<span class="go">content-length: 12226</span>
+<span class="go">vary: Accept-Encoding</span>
+<span class="go">accept-ranges: bytes</span>
+<span class="go">etag: &quot;qlhhn49fm&quot;</span>
+<span class="go">last-modified: Thu, 17 Dec 2020 12:35:28 GMT</span>
+<span class="go">strict-transport-security: max-age=15724800; includeSubDomains</span>
+</code></pre></div>
+<p>You can see a few things happening here:</p>
+<ul>
+<li>HTTP-&gt;HTTPS redirect is established automatically;</li>
+<li>Once redirected to HTTPS, your application TLS setup works properly (curl is able to verify certificate validity for your domain).</li>
+</ul>
+<h2 id="deployment-without-cname-alias">Deployment without CNAME alias<a class="headerlink" href="#deployment-without-cname-alias" title="Permanent link">&para;</a></h2>
+<p>If you skipped the DNS setup until this point, you should still be able to ping your application and get a response back. The only difference is that TLS certificate will not be provisioned, as certificate manager can't complete a HTTP-01 challenge without LetsEncrypt being able to reach your app via the "official" URL.</p>
+<p>To ping our app without a DNS CNAME, use the internal DNS name and pass "host" header for the ingress routing to work. You'll need to ignore certificate errors, as your application will be using self-signed certificate as a fallback.</p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>curl -s -k -H <span class="s2">&quot;Host: sample-app.yourdomain.com&quot;</span> https://1234567890.your-cluster-name-7da6f229.onmulti.cloud <span class="p">|</span> head -n <span class="m">4</span>
+<span class="go">&lt;!DOCTYPE html&gt;</span>
+<span class="go">&lt;html&gt;</span>
+<span class="go"> &lt;head&gt;</span>
+<span class="go">  &lt;title&gt;Caddy works!&lt;/title&gt;</span>
+</code></pre></div>
+<p>If you don't intend creating a user-friendly url, another alternative is to use internal DNS name as ingress host. This will enable cert manager to provision proper TLS certificate and your app will be reachable via this name directly.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">spec</span><span class="p">:</span>
+  <span class="nt">tls</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">hosts</span><span class="p">:</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">1234567890.your-cluster-name-7da6f229.onmulti.cloud</span>
+      <span class="nt">secretName</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">sample-app</span>
+  <span class="nt">rules</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">host</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1234567890.your-cluster-name-7da6f229.onmulti.cloud</span>
+      <span class="nt">http</span><span class="p">:</span>
+</code></pre></div>
+<h2 id="metrics">Metrics<a class="headerlink" href="#metrics" title="Permanent link">&para;</a></h2>
+<p>Once you have your application up and running, you can check another out-of-the-box feature CAST AI configures for you: the ingress metrics and dashboard. Head to CAST.AI console, and in your cluster details page, click on the <em>"Grafana metrics"</em> link in the side menu. Once in Grafana, click <em>"Home"</em> in the top-left corner and open "NGINX Ingress controller" dashboard. You should be greeted with a view similar to this:</p>
+<p><img alt="" src="ingress-dashboard.png" /></p>
+<p>This dashboard provides an overview of your application traffic. To tailor the dashboard to your specific needs, refer to <a href="https://docs.nginx.com/nginx-ingress-controller/logging-and-monitoring/prometheus/">NGINX metrics documentation</a> for more details on available metrics.</p>
+<h2 id="combinations">Combinations<a class="headerlink" href="#combinations" title="Permanent link">&para;</a></h2>
+<h3 id="single-host-multiple-services">Single host, multiple services<a class="headerlink" href="#single-host-multiple-services" title="Permanent link">&para;</a></h3>
+<p>You can use path-based routing to redirect traffic to specific services using <a href="https://kubernetes.io/docs/concepts/services-networking/ingress/#path-types">ingress rule paths</a>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">spec</span><span class="p">:</span>
+  <span class="nt">rules</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">host</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">sample-app.yourdomain.com</span>
+      <span class="nt">http</span><span class="p">:</span>
+        <span class="nt">paths</span><span class="p">:</span>
+          <span class="p p-Indicator">-</span> <span class="nt">path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/static</span>
+            <span class="nt">backend</span><span class="p">:</span>
+              <span class="nt">serviceName</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">static-resources</span>
+              <span class="nt">servicePort</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">http</span>
+          <span class="p p-Indicator">-</span> <span class="nt">path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/</span>
+            <span class="nt">backend</span><span class="p">:</span>
+              <span class="nt">serviceName</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">base-app</span>
+              <span class="nt">servicePort</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">http</span>
+</code></pre></div>
+<h3 id="multiple-hosts">Multiple hosts<a class="headerlink" href="#multiple-hosts" title="Permanent link">&para;</a></h3>
+<p>To manage multiple domains, you can just deploy multiple ingress resources, or include more domains into same ingress resource.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># first host</span>
+<span class="nt">apiVersion</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">networking.k8s.io/v1beta1</span>
+<span class="nt">kind</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Ingress</span>
+<span class="nt">metadata</span><span class="p">:</span>
+  <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">sample-app-ingress</span>
+  <span class="nt">annotations</span><span class="p">:</span>
+    <span class="nt">kubernetes.io/ingress.class</span><span class="p">:</span> <span class="s">&quot;nginx&quot;</span>
+    <span class="nt">cert-manager.io/cluster-issuer</span><span class="p">:</span> <span class="s">&quot;letsencrypt-prod&quot;</span>
+<span class="nt">spec</span><span class="p">:</span>
+  <span class="nt">tls</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">hosts</span><span class="p">:</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">sample-app.yourdomain.com</span>
+      <span class="nt">secretName</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">sample-app-cert</span>
+  <span class="nt">rules</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">host</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">sample-app.yourdomain.com</span>
+      <span class="nt">http</span><span class="p">:</span>
+        <span class="nt">paths</span><span class="p">:</span>
+          <span class="p p-Indicator">-</span> <span class="nt">path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/</span>
+            <span class="nt">backend</span><span class="p">:</span>
+              <span class="nt">serviceName</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">sample-app</span>
+              <span class="nt">servicePort</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">http</span>
+<span class="nn">---</span>
+<span class="c1"># second host</span>
+<span class="nt">apiVersion</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">networking.k8s.io/v1beta1</span>
+<span class="nt">kind</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Ingress</span>
+<span class="nt">metadata</span><span class="p">:</span>
+  <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">sample-app-ingress2</span>
+  <span class="nt">annotations</span><span class="p">:</span>
+    <span class="nt">kubernetes.io/ingress.class</span><span class="p">:</span> <span class="s">&quot;nginx&quot;</span>
+    <span class="nt">cert-manager.io/cluster-issuer</span><span class="p">:</span> <span class="s">&quot;letsencrypt-prod&quot;</span>
+<span class="nt">spec</span><span class="p">:</span>
+  <span class="nt">tls</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">hosts</span><span class="p">:</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">sample-app2.yourdomain.com</span>
+      <span class="c1"># note that secret needs to be unique for each domain, unless deployments</span>
+      <span class="c1"># will be separated by kubernetes namespaces</span>
+      <span class="nt">secretName</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">sample-app-cert-2</span>  
+  <span class="nt">rules</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">host</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">sample-app2.yourdomain.com</span>
+      <span class="nt">http</span><span class="p">:</span>
+        <span class="nt">paths</span><span class="p">:</span>
+          <span class="p p-Indicator">-</span> <span class="nt">path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/</span>
+            <span class="nt">backend</span><span class="p">:</span>
+              <span class="nt">serviceName</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">sample-app2</span>
+              <span class="nt">servicePort</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">http</span>
+<span class="nn">---</span>
+
+<span class="c1"># combining: multiple hosts per certificate and/or multiple certificates per single ingress resource</span>
+<span class="nt">apiVersion</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">networking.k8s.io/v1beta1</span>
+<span class="nt">kind</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Ingress</span>
+<span class="nt">metadata</span><span class="p">:</span>
+  <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">sample-app-ingress3</span>
+  <span class="nt">annotations</span><span class="p">:</span>
+    <span class="nt">kubernetes.io/ingress.class</span><span class="p">:</span> <span class="s">&quot;nginx&quot;</span>
+    <span class="nt">cert-manager.io/cluster-issuer</span><span class="p">:</span> <span class="s">&quot;letsencrypt-prod&quot;</span>
+<span class="nt">spec</span><span class="p">:</span>
+  <span class="nt">tls</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">hosts</span><span class="p">:</span>
+        <span class="c1"># two domains under single certificate</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">sample-app3.yourdomain.com</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">sample-app3-alternative.yourdomain.com</span>
+      <span class="nt">secretName</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">sample-app3-cert</span>
+    <span class="p p-Indicator">-</span> <span class="nt">hosts</span><span class="p">:</span>
+        <span class="c1"># another side-by-side certificate</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">sample-app4.yourdomain.com</span>
+      <span class="nt">secretName</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">sample-app4-cert</span>
+  <span class="nt">rules</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">host</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">sample-app3.yourdomain.com</span>
+      <span class="nt">http</span><span class="p">:</span>
+        <span class="nt">paths</span><span class="p">:</span>
+          <span class="p p-Indicator">-</span> <span class="nt">path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/</span>
+            <span class="nt">backend</span><span class="p">:</span>
+              <span class="nt">serviceName</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">sample-app</span>
+              <span class="nt">servicePort</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">http</span>
+    <span class="p p-Indicator">-</span> <span class="nt">host</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">sample-app3-alternative.yourdomain.com</span>
+      <span class="nt">http</span><span class="p">:</span>
+        <span class="nt">paths</span><span class="p">:</span>
+          <span class="p p-Indicator">-</span> <span class="nt">path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/</span>
+            <span class="nt">backend</span><span class="p">:</span>
+              <span class="nt">serviceName</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">sample-app</span>
+              <span class="nt">servicePort</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">http</span>
+    <span class="p p-Indicator">-</span> <span class="nt">host</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">sample-app4.yourdomain.com</span>
+      <span class="nt">http</span><span class="p">:</span>
+        <span class="nt">paths</span><span class="p">:</span>
+          <span class="p p-Indicator">-</span> <span class="nt">path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/</span>
+            <span class="nt">backend</span><span class="p">:</span>
+              <span class="nt">serviceName</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">sample-app2</span>
+              <span class="nt">servicePort</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">http</span>
+</code></pre></div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../pod-autoscaler/hpa/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Horizontal Pod Autoscaler
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../node-autoscaler/spot-instances/spot/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Spot/Preemptible Instances
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/vendor.53cc9318.min.js"></script>
+      <script src="../../assets/javascripts/bundle.e9c9f54f.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../..",
+          features: [],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.9c0e82ba.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>
