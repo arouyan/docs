@@ -2,12 +2,12 @@
 
 This guide will help you get started and deploy your first cluster with CAST AI.
 
-To start using CAST AI you will need:
-- An account - [sign up here](https://console.cast.ai/signup)
+To start using CAST AI, you will need:
+- A CAST AI account - [sign up here](https://console.cast.ai/signup)
 - Cloud credentials - [join slack and claim free trial](https://join.slack.com/t/castai-community/shared_invite/zt-kxomy09z-p_tbccVJ61azObIt~GUjXQ)
 - An application developed on Kubernetes
 
-Refer to the table of contents on the right side to quickly navigate through this document.
+Refer to the table of contents on the right to quickly navigate through this document.
 
 **Estimated time to get started - 5 minutes.**
 
@@ -15,19 +15,19 @@ Refer to the table of contents on the right side to quickly navigate through thi
 
 You can skip this step if you have a free trial activated.
 
-CAST AI will need your cloud credentials to call cloud APIs, so the platform can create, orchestrate and optimize clusters for you. CAST AI does not store your credentials anywhere, and you can opt out and remove them any time you want. If you remove the credentials - you are free to use the Kubernetes provisioned cluster as it is but you will lose all the managed service benefits and features that CAST AI offers.
+CAST AI will need your cloud credentials to call cloud APIs, so that it can create, orchestrate, and optimize clusters for you. CAST AI does not store your credentials anywhere, and you can opt out and remove them any time you want. If you remove the credentials, you are free to use the provisioned Kubernetes cluster as it is but you will lose all the managed service benefits and features that CAST AI offers.
 
 ### Amazon Web Services credentials
 
-To add AWS credentials you will need: **Access key ID**, **Secret access key**
+To add AWS credentials, you will need: **Access key ID**, **Secret access key**
 
 1. Add a new user
-   - Open https://console.aws.amazon.com
-   - Open the IAM service, then go to Users and click on Add user
-   - Select **Programmatic access**
+   - Open https://console.aws.amazon.com.
+   - Open the IAM service, then go to Users and click on Add user.
+   - Select **Programmatic access**.
 2. Create a new group
-   - Select the following permissions as
-   - **AmazonVPCFullAccess**, **AmazonEC2FullAccess** and **IAMFullAccess**
+   - Select the following permissions as.
+   - **AmazonVPCFullAccess**, **AmazonEC2FullAccess** and **IAMFullAccess**.
 3. Paste cloud credentials
    - Once you reach the last page ("Create user"), copy the **access key ID** and **secret access key**, and paste them to the form in CAST AI console.
    
@@ -35,7 +35,7 @@ To add AWS credentials you will need: **Access key ID**, **Secret access key**
    
 ### Azure cloud credentials
 
-To add Azure credentials you will need: **Directory (Tenant) ID, Application (Client ID), Client Secret, Subscription ID**
+To add Azure credentials, you will need: **Directory (Tenant) ID, Application (Client ID), Client Secret, Subscription ID**
 
 To get started, you need to create an Active Directory (AD) service principal in your Azure account and assign the required permissions.
 
@@ -48,20 +48,20 @@ To get started, you need to create an Active Directory (AD) service principal in
    - Create a new client secret without expiration.
    - Paste in the new client secret value to the form on the left side, to the **Client Secret** field.
 2. Give access to the CAST AI application by requesting a sign-in using a browser
-   - Accept CAST AI application.
-   - After Sign-in you should see **Permissions requested** window. Click Accept which will allow you to add the CAST AI application role.
+   - Accept the CAST AI application.
+   - After Sign-in, you should see the **Permissions requested** window. Click Accept - this will allow you to add the CAST AI application role.
 3. Assign the roles
    - Open Subscriptions page and go to your subscription.
-   - Paste in the **Subscription ID** to the form on the left side.
+   - Paste the **Subscription ID** to the form on the left side.
    - Select the Access Control (IAM) in the left sidebar menu.
-   - Add the role assignment with Role: Contributor, and in the Select search field type your Client Secret (created during the first step).
-   - Add another role assignment with Role: Contributor, and in the Select input field search for **CAST AI Shared Images** then click save (if the role is not visible please check previous step and try again).
+   - Add the role assignment with Role: Contributor, and in the Select search field type your Client Secret (created in the first step).
+   - Add another role assignment with Role: Contributor, and in the Select input field search for **CAST AI Shared Images**, then click Save (if the role is not visible, please check the previous step and try again).
    
 [Documentation on Azure Cloud EKS IAM Policies, Roles, and Permissions.](https://docs.microsoft.com/en-us/azure/active-directory/develop/app-objects-and-service-principals)
 
 ### Digital Ocean credentials
 
-To add Digital Ocean credentials you will need: **Personal Access Token**
+To add Digital Ocean credentials, you will need: **Personal Access Token**
 
 To get started, you need to create a Personal Access Token and define its access permissions.
 1. Sign into your [Digital Ocean](https://cloud.digitalocean.com/) account
@@ -70,11 +70,11 @@ To get started, you need to create a Personal Access Token and define its access
 3. Click **Generate New Token** in the Personal Access Token section
 4. Add a name and select both the **read** and **write** scopes
 5. Click **Generate Token**
-6. The token will be displayed only once under the name you gave it. Paste the token in the credentials form in CAST AI console.
+6. The token will be displayed only once, under the name you gave it. Paste the token in the credentials form in CAST AI console.
 
 ### Google Cloud Platform credentials
 
-To add GCP credentials you will need: **Service Account JSON**
+To add GCP credentials, you will need: **Service Account JSON**
 
 To get started, you need to create a service account in your Google Cloud Platform account and assign the required permissions.
 1. Enable APIs for your project
@@ -82,9 +82,9 @@ To get started, you need to create a service account in your Google Cloud Platfo
    - [Resource Manager API](https://console.cloud.google.com/apis/api/cloudresourcemanager.googleapis.com/overview)
    - [Compute Engine API](https://console.cloud.google.com/apis/api/compute.googleapis.com/overview)
 2. Create Service account
-   - Open https://console.cloud.google.com
-   - Select IAM & Admin and go to Service accounts
-   - Create a new service account and assign these roles
+   - Open https://console.cloud.google.com.
+   - Select IAM & Admin and go to Service accounts.
+   - Create a new service account and assign these roles:
      - Compute Admin
      - +add another role - Service Account User
      - +add another role - Service Account Admin
@@ -96,12 +96,12 @@ To get started, you need to create a service account in your Google Cloud Platfo
    
 ## Create cluster
 
-Once you have [cloud credentials](https://github.com/v1dm45/docs/blob/main/docs/getting-started.md#add-cloud-credentials) - you are ready to create a cluster. In cluster creation window you will have a few options to lay a base foundation for your cluster, which we will be able to further customize to your needs once a cluster is up and running.
+Once you have your [cloud credentials](https://github.com/v1dm45/docs/blob/main/docs/getting-started.md#add-cloud-credentials), you are ready to create a cluster. In the cluster creation window, you will have a few options to lay a base foundation for your cluster. We will further customize it to your needs once the cluster is up and running.
 
 **1. Cluster details**
 
 The new cluster will be created with the name and in the region you specify here.
-After the cluster is created, name and region can’t be changed.
+After the cluster is created, you can't change the name or region.
 
    - Name your cluster (2-50 symbols, only letters, numbers and hyphens allowed)
 
@@ -109,27 +109,27 @@ After the cluster is created, name and region can’t be changed.
    
 **2. Cluster configuration**
 
-Select initial cluster configuration. It may be automatically adjusted based on scaling and cost optimization policies. You will be able to adjust policies once the cluster is created. You may also manually add nodes once the cluster is provisioned.
+Select the initial cluster configuration. It may be adjusted automatically based on the scaling and cost optimization policies. You will be able to adjust policies once the cluster is created. You may also manually add nodes once the cluster is provisioned.
 
 **3. Cloud providers**
 
-Select the cloud provider(s) you would like to use for this cluster. You will need to select credentials that you would like to use for each provider, please refer to [Adding credentials] section if you have no credentials added.
+Select the cloud provider(s) you would like to use for this cluster. You will need to select the credentials that you want to use for each provider. Please refer to [Adding credentials] section if you have not added any credentials yet.
 
 **4. Cluster virtual private network**
 
-Select preferred encrypted connection type. Cloud provided VPN is a default VPN provided by the respective cloud service providers. WireGuard is a CAST AI integrated choice of VPN that [significantly reduces cloud cost].
+Select the preferred encrypted connection type. Cloud-provided VPN is a default VPN provided by the respective cloud service providers. WireGuard is a CAST AI integrated choice of VPN that [reduces cloud costs significantly].
 
-- WireGuard VPN: Full Mesh - network traffic is encrypted between all nodes
-- WireGuard VPN: Cross Location Mesh - network traffic is encrypted only between nodes in different clouds
-- Cloud provided VPN - default network encryption provided by selected CSPs
+- WireGuard VPN: Full Mesh - network traffic is encrypted between all nodes.
+- WireGuard VPN: Cross Location Mesh - network traffic is encrypted only between nodes in different clouds.
+- Cloud provided VPN - default network encryption provided by selected providers.
 
 ## Deploy application
 
-CAST AI managed cluster runs on Kubernetes. Once you have a cluster running - you can download a **kubeconfig file** of the cluster and deploy your application using **kubectl** command-line tool.
+The CAST AI managed cluster runs on Kubernetes. Once you have a cluster running, you can download a **kubeconfig file** of the cluster and deploy your application using the **kubectl** command-line tool.
 
 [screenshot]
 
-For more information please refer to [Kubernetes documentation](https://kubernetes.io/docs/home/).
+For more information, please refer to [Kubernetes documentation](https://kubernetes.io/docs/home/).
 
 Relevant for this section:
 
