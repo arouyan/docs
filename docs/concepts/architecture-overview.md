@@ -1,45 +1,45 @@
 ## Cluster lifecycle
 ### 1. Provisioning
 
-You initiate creation of the cluster. Refer to [getting started](https://github.com/v1dm45/docs/blob/main/docs/getting-started.md) on how to create a cluster.
+You initiate cluster creation. Refer to [getting started](https://github.com/v1dm45/docs/blob/main/docs/getting-started.md) to learn how to create a cluster.
 
 
 ### 2. Reconciliation & healing
 
-A cluster enters a reconciliation loop. The platform periodically re-checks that actual infrastructure on your cloud reflects the specified configuration, and performs upgrades & patching. Reconciliation performs checks such as:
+The cluster enters a reconciliation loop. The platform periodically re-checks that actual infrastructure on your cloud reflects the specified configuration, and performs upgrades and patching. Reconciliation performs checks such as:
 
   - [x] Cluster network configuration is up to date;
-  - [x] Are any nodes missing, e.g. accidentally deleted;
-  - [x] Are there any unused resources to clean up;
+  - [x] No nodes are missing, for example, were accidentally deleted;
+  - [x] Any unused resources to clean up;
 
 ### 3. Resizing
 
-CAST AI clusters do not use a "node pool" concept. Instead, you can: 
+CAST AI clusters do not use the "node pool" concept. Instead, you can: 
 
-   - Manually add or remove nodes with specified configuration.
-   - Enable autoscaling policies - it scales up and down per-node level.
+   - Manually add or remove nodes with a specified configuration.
+   - Enable autoscaling policies to scale up and down per-node level.
 
 ### 4. Cleanup
 
-When you delete a cluster platform will collapse cloud resources in the quickest way. Nodes will not be drained before deleting them.
+When you delete a cluster, the platform will collapse cloud resources in the fastest way. Nodes will not be drained before being deleted.
 
-The platform is designed to minimize unintended removals. If you have any extra virtual machines that do not contain CAST AI cluster UUID - delete operation will fail.
+The platform is designed to minimize unintended removals. If you have any extra virtual machines that do not contain CAST AI cluster UUID - the delete operation will fail.
 
 ## Cluster architecture
 
 ### Context
 
-When you [create a cluster](https://github.com/v1dm45/docs/blob/main/docs/getting-started.md#create-cluster) you can [download kubeconfig](https://github.com/v1dm45/docs/blob/main/docs/getting-started.md#deploy-application) to access your cluster directly. Some of the middleware that is running on the cluster (Grafana, Kubernetes dashboard) is directly reachable from [console UI](https://github.com/v1dm45/docs/blob/main/docs/Dashboard%20Overview/Console%20overview.md#console-overview) through the single-signon gateway.
+When you [create a cluster](https://github.com/v1dm45/docs/blob/main/docs/getting-started.md#create-cluster) you can [download kubeconfig](https://github.com/v1dm45/docs/blob/main/docs/getting-started.md#deploy-application) to access your cluster directly. Some of the middleware running on the cluster (Grafana, the Kubernetes dashboard) is directly reachable from the [console UI](https://github.com/v1dm45/docs/blob/main/docs/Dashboard%20Overview/Console%20overview.md#console-overview) through the single-signon gateway.
 
-You can notice on the diagram below that there is a bi-direction link between your cluster and CAST AI platform. Not only the platform connects to your cloud infrastructure or the cluster itself; CAST AI also relies on the cluster to "call back" and inform about certain events:
+You can see on the diagram below that there is a bi-direction link between your cluster and the CAST AI platform. The platform not only connects to your cloud infrastructure or the cluster itself, it also relies on the cluster to "call back" and inform about certain events:
 
-* Cluster control plane nodes actions with provisioning engine, e.g. when to join the cluster;
-* Nodes inform about operations being completed, like finishing joining the cluster;
-* Relevant cloud events get propagated to provisioning engine & autoscaler, for example, "spot instance is being terminated by cloud provider";
+* Cluster control plane nodes actions with the provisioning engine, e.g., when to join the cluster;
+* Nodes inform about operations being completed, like finishing to join the cluster;
+* Relevant cloud events get propagated to the provisioning engine & autoscaler, for example, "spot instance is being terminated by cloud provider";
 
-Your app users do not interact with CAST AI in any way. You own your kubernetes cluster infrastructure 100%, including any [ingress infrastructure](https://github.com/v1dm45/docs/blob/main/docs/concepts/architecture-overview.md#ingress) to reach your cluster workloads.
+Your app users do not interact with CAST AI in any way. You own your Kubernetes cluster infrastructure by 100%, including any [ingress infrastructure](https://github.com/v1dm45/docs/blob/main/docs/concepts/architecture-overview.md#ingress) to reach your cluster workloads.
 
-Below diagram highlights primary groups of components that define a relationship between CAST AI platform and your cluster:
+The diagram below highlights the primary groups of components that define a relationship between CAST AI platform and your cluster:
 
 ![](architecture-overview/component-relationships.png)
 
@@ -53,12 +53,12 @@ Overview on where cluster virtual machines will be provisioned on your cloud:
 
 ### Ingress
 
-CAST AI provisioned clusters contain all the infrastructure needed to equip your app with an external TLS endpoint:
+The CAST AI provisioned clusters contain all the infrastructure needed to equip your app with an external TLS endpoint:
 
 * DNS entry to round-robin;
-* Load-balancing infrastructure: cloud-native load balancers that route traffic to sub-section of your cluster (e.g. traffic that hits AWS load balancer will route to AWS nodes);
-* Nginx ingress controller, paired with TLS certificate manager, that listen to your deployed resources and maintain routing&TLS configuration;
-* Metric collection for your ingress traffic;
+* Load-balancing infrastructure: cloud-native load balancers that route traffic to a sub-section of your cluster (e.g., traffic that hits AWS load balancer will route to AWS nodes);
+* Nginx ingress controller paired with TLS certificate manager that listen to your deployed resources and maintain routing&TLS configuration;
+* Metrics collection for your ingress traffic;
 
 All that is left for you as an application developer is to deploy your app, ingress resource, and configure a domain alias of your choice. See the [ingress guide](../guides/ingress.md) for more details.
 
